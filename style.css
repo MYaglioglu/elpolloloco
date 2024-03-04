@@ -1,0 +1,449 @@
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: url('./img/das.png') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Zabars';
+}
+
+@font-face {
+    font-family: 'zabars';
+    src: url('fonts/Zabars.ttf');
+}
+
+canvas {
+    background-color: black;
+    display: block;
+}
+
+#fullscreen{
+    display: flex;
+    flex-direction: column;
+}
+
+.d-none {
+    display: none !important;
+}
+
+.movements {
+    display: flex;
+    gap: 64px;
+    justify-content: center;
+}
+
+#startGames {
+    height: 201px !important;
+    width: 478px !important;
+    margin-top: -511px;
+    margin-left: 107px;
+    position: absolute;
+}
+
+#startGames:hover {
+    cursor: pointer;
+}
+
+#startScreen img {
+    width: 720px;
+    height: 480px;
+}
+
+#endScreen {
+    position: absolute;
+    top: 214px;
+    /* left: 0; */
+    width: 720px;
+    height: 483px;
+    display: flex;
+    justify-content: center;
+    z-index: 200;
+    background-color: rgba(0, 0, 0, 0.7);
+    /* Hintergrund mit Transparenz für den Effekt */
+}
+
+#endScreen img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+#endScreenWin {
+    position: absolute;
+    top: 214px;
+    /* left: 0; */
+    width: 720px;
+    height: 483px;
+    display: flex;
+    justify-content: center;
+    z-index: 200;
+    background-color: rgba(0, 0, 0, 0.7);
+    /* Hintergrund mit Transparenz für den Effekt */
+}
+
+#endScreenWin img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+#replayButton {
+    position: absolute;
+    /* top: 0; */
+    bottom: 0;
+    width: 216px;
+    height: 172px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 200;
+}
+
+#replayButton:hover {
+    cursor: pointer;
+}
+
+.buttonRow {
+    margin-top: -20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 84px;
+}
+
+.buttonRow img:hover {
+    cursor: pointer;
+}
+
+.buttonRow img {
+    object-fit: contain;
+    width: 200px;
+    height: 50px;
+    margin: 0 10px;
+    font-size: 24px;
+    font-family: 'Zabars';
+    color: #ffffff;
+    border-radius: 10px;
+}
+
+#startButton {
+    width: 250px;
+    height: 125px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 200;
+}
+
+
+
+.hud {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 720px;
+    margin-top: -80px;
+}
+
+.panel {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 84px;
+    width: 100%;
+}
+
+.panelLeftRow {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 14px;
+}
+
+.panelRightRow {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 14px;
+}
+
+h1 {
+    font-size: 56px;
+}
+
+@media screen and (max-width: 1024px) {
+    
+    canvas {
+        width: 100%;
+    }
+
+    h1 {
+        display: none;
+    }
+
+    #endScreen {
+        height: 280px
+    }
+
+    .hud {
+        width: 100%;
+    }
+
+    #endScreenWin {
+        height: 280px;
+        top: 80px;
+        width: 100%;
+    }
+
+    #startScreen img {
+        width: 100%;
+    }
+
+    .buttonRow {
+        position: relative;
+        width: 100%;
+        margin-top: 60px;
+        margin-bottom: -64px;
+        height: 50px;
+        z-index: 1000;
+    }
+
+    #muteButton {
+        margin-top: -35px;
+        height: 30px;
+    }
+
+    #unmuteButton {
+        margin-top: -35px;
+        height: 30px;
+    }
+
+    #startButton {
+        margin-top: -35px;
+        height: 70px;
+    }
+
+    #fullscreenButton {
+        margin-top: -35px;
+        height: 30px;
+        display: flex;
+    }
+
+    #exitFullscreenButton {
+        margin-top: -35px;
+        height: 30px;
+        display: flex;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    body::after {
+        content: "";
+        background: url('img/rotPhone.png') no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+    }
+}
+
+@media only screen and (max-height: 820px) {
+    .movements {
+        margin-top: -650px;
+    }
+
+    canvas {
+        height: 600px;
+    }
+
+    #endScreen {
+        width: 100%;
+        height: 600px;
+        top: 46px;
+    }
+
+    #endScreenWin {
+        width: 100%;
+        height: 600px;
+        top: 46px;
+    }
+
+    #startScreen {
+        width: 100%;
+    }
+
+    #startScreen img{
+        width: 100%;
+        height: 600px;
+        top: 46px;
+    }
+}
+
+@media only screen and (max-height: 700px) {
+    .movements {
+        margin-top: -610px;
+    }
+
+    canvas {
+        height: 550px;
+    }
+
+    #endScreen {
+        height: 550px;
+    }
+    #endScreenWin {
+        height: 550px;
+    }
+    #startScreen img{
+        height: 550px;
+    }
+}
+
+@media only screen and (max-height: 640px) {
+    .movements {
+        margin-top: -555px;
+    }
+
+    canvas {
+        height: 500px;
+    }
+
+    #endScreen {
+        height: 500px;
+    }
+    #endScreenWin {
+        height: 500px;
+    }
+    #startScreen img{
+        height: 500px;
+    }
+}
+
+@media only screen and (max-height: 580px) {
+    .movements {
+        margin-top: -500px;
+    }
+
+    canvas {
+        height: 450px;
+    }
+
+    #endScreen {
+        height: 450px;
+    }
+    #endScreenWin {
+        height: 450px;
+    }
+    #startScreen img{
+        height: 450px;
+    }
+}
+
+@media only screen and (max-height: 540px) {
+    .movements {
+        margin-top: -450px;
+    }
+
+    canvas {
+        height: 400px;
+    }
+
+    #endScreen {
+        height: 400px;
+    }
+    #endScreenWin {
+        height: 400px;
+    }
+    #startScreen img{
+        height: 400px;
+    }
+}
+
+@media only screen and (max-height: 460px) {
+    .movements {
+        margin-top: -400px;
+    }
+
+    canvas {
+        height: 350px;
+    }
+
+    #endScreen {
+        height: 350px;
+    }
+    #endScreenWin {
+        height: 350px;
+    }
+    #startScreen img{
+        height: 350px;
+    }
+}
+
+@media only screen and (max-height: 425px) {
+    .movements {
+        margin-top: -365px;
+    }
+
+    canvas {
+        height: 320px;
+    }
+
+    #endScreen {
+        height: 320px;
+    }
+    #endScreenWin {
+        height: 320px;
+    }
+    #startScreen img{
+        height: 320px;
+    }
+
+    .buttonRow {
+        margin-top: 36px;
+    }
+}
+
+@media only screen and (max-height: 380px) {
+    .movements {
+        margin-top: -360px;
+    }
+
+    canvas {
+        height: 310px;
+    }
+
+    #endScreen {
+        height: 310px;
+    }
+    #endScreenWin {
+        height: 310px;
+    }
+    #startScreen img{
+        height: 310px;
+    }
+}
+
+@media only screen and (max-height: 350px) {
+    body::after {
+        content: "";
+        background: url('img/rotPhone.png') no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+    }
+}

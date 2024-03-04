@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El-Pollo-Loco!</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="img/favicon.png">
+    <script src="models/drawable-object.class.js"></script>
+    <script src="models/movable-object.class.js"></script>
+    <script src="models/collectables.class.js"></script>
+    <script src="models/status-bar-health.class.js"></script>
+    <script src="models/status-bar-coins.class.js"></script>
+    <script src="models/status-bar-bottles.class.js"></script>
+    <script src="models/status-bar-boss-health.class.js"></script>
+    <script src="models/character.class.js"></script>
+    <script src="models/chicken.class.js"></script>
+    <script src="models/small-chicken.class.js"></script>
+    <script src="models/background-object.class.js"></script>
+    <script src="models/cloud.class.js"></script>
+    <script src="models/world.class.js"></script>
+    <script src="models/keyboard.class.js"></script>
+    <script src="models/level.class.js"></script>
+    <script src="models/throwable-object.class.js"></script>
+    <script src="models/coin.class.js"></script>
+    <script src="models/bottle.class.js"></script>
+    <script src="models/endboss.class.js"></script>
+    <script src="js/game.js"></script>
+    <script src="levels/level1.js"></script>
+</head>
+
+<body>
+
+    <h1>El-Pollo-Loco!</h1>
+
+    <div id="fullscreen">
+        <div class="buttonRow">
+            <img id="muteButton" onclick="mute()" src="img/icons/mute.png">
+            <img class="d-none" id="unmuteButton" onclick="unmute()" src="img/icons/unmute.png">
+            <img id="fullscreenButton" onclick="fullscreen()" src="img/icons/fullscreen.png">
+            <img id="exitFullscreenButton" class="d-none" onclick="closeFullscreen()" src="img/icons/fullscreen-exit.svg">
+            <img id="startButton" onclick="startGame()" src="img/start-game.png">
+        </div>
+
+        <canvas id="canvas" width="720px" height="480px" class="d-none">
+        </canvas>
+
+        <div id="startScreen">
+            <div>
+                <img src="img/9_intro_outro_screens/start/startscreen_2.png" alt="">
+            </div>
+        </div>
+
+        <div class="hud">
+            <div class="panel">
+                <div class="panelLeftRow">
+                    <div id="leftButton">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor"
+                            class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0m3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z" />
+                        </svg>
+                    </div>
+                    <div id="rightButton">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor"
+                            class="bi bi-arrow-right-circle-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="panelRightRow">
+                    <div id="jumpButton">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor"
+                            class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0m-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707z" />
+                        </svg>
+                    </div>
+                    <div id="throwButton">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor"
+                            class="bi bi-arrow-up-right-circle-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M0 8a8 8 0 1 0 16 0A8 8 0 0 0 0 8m5.904 2.803a.5.5 0 1 1-.707-.707L9.293 6H6.525a.5.5 0 1 1 0-1H10.5a.5.5 0 0 1 .5.5v3.975a.5.5 0 0 1-1 0V6.707z" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="movements">
+            <h2>Arrow left/right to move</h2>
+            <h2>D to throw bottle</h2>
+            <h2>Space to jump</h2>
+        </div>
+
+        <div id="endScreen" class="endScreen d-none">
+            <img src="img/9_intro_outro_screens/game_over/oh no you lost!.png">
+            <img id="replayButton" onclick="startGame()" src="img/replay.png">
+        </div>
+
+        <div id="endScreenWin" class="endScreen d-none">
+            <img src="img/9_intro_outro_screens/game_over/game over!.png">
+            <img id="replayButton" onclick="startGame()" src="img/replay.png">
+        </div>
+    </div>
+</body>
+
+</html>
